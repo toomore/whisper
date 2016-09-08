@@ -20,7 +20,7 @@ then
     then
         UUID=$(uuidgen)
         echo "!: Insert record into 'index.txt' ($UUID)"
-        echo "$UUID $(date +"%Y%m%d%H%M%S") " >> "index.txt"
+        echo "$UUID $(date +"%FT%T%z") " >> "index.txt"
         touch "$UUID".txt
     fi
 elif [ "$DO" == "e" ]; then
