@@ -12,6 +12,6 @@ fi
 if [ -w "index.txt" ];
 then
     UUID=$(uuidgen)
-    echo "$UUID  " >> "index.txt"
+    echo "$UUID $(date +"%Y%m%d%H%M%S") " >> "index.txt"
     touch "$UUID".txt
 fi
