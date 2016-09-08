@@ -1,5 +1,6 @@
 #!/bin/bash
 DO=${1}
+FRP="422b779cd894982bc41e85ee3624cad78afc3169"
 echo $DO
 
 if [ "$DO" == "new" ];
@@ -22,7 +23,7 @@ then
     fi
 elif [ "$DO" == "enc" ]; then
     for i in $(find . -name "*.txt");do
-        gpg -vae --yes -r 422b779cd894982bc41e85ee3624cad78afc3169 $i
+        gpg -vae --yes -r $FRP $i
         rm -rf $i
     done
 fi
