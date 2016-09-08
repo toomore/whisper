@@ -25,9 +25,23 @@ then
     fi
 elif [ "$DO" == "e" ]; then
     echo '!: Encrypt all.'
-    for i in $(find . -name "*.txt");do
+    for i in $(find . -name "*.txt" -maxdepth 1);do
         gpg -vae --yes -r $FRP $i
         rm -rf $i
+    done
+
+    if [ ! -d "deep" ];
+    then
+        echo "!: Create 'deep'"
+        mkdir "deep"
+    fi
+
+    for i in $(find . -name "*.txt.asc" -maxdepth 1);do
+        if [ ! "$i" == "./index.txt.asc" ];
+        then
+            echo "!: Move $i into 'deep'"
+            mv $i ./deep
+        fi
     done
 else
     echo "whisper [cmd]"
