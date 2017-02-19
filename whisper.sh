@@ -23,6 +23,7 @@ then
         echo "$UUID $(date +"%FT%T%z") " >> "index.txt"
         echo -e "\033[1;33m🤖 Create $UUID.txt\033[0m"
         touch "$UUID".txt
+        vim -p ./index.txt "$UUID".txt
     fi
 elif [ "$DO" == "e" ]; then
     echo -e '\033[1;33m🔑 Encrypt all.\033[0m'
