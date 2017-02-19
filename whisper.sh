@@ -13,7 +13,7 @@ then
     if [ -r "index.txt.asc" ] && [ ! -w "index.txt" ];
     then
         echo -e '\033[1;33m😱 Decrypt `index.txt`\033[0m'
-        gpg -v "index.txt.asc"
+        gpg2 -v "index.txt.asc"
     fi
 
     if [ -w "index.txt" ];
@@ -28,7 +28,7 @@ elif [ "$DO" == "e" ]; then
     echo -e '\033[1;33m🔑 Encrypt all.\033[0m'
     for i in $(find . -name "*.txt" -maxdepth 1);do
         echo -e "\033[1;33m🔑 Encrypt $i \033[0m"
-        gpg -vae --yes -r $FRP $i
+        gpg2 -vae --yes -r $FRP $i
         rm -rf $i
     done
 
@@ -46,7 +46,7 @@ elif [ "$DO" == "e" ]; then
         fi
     done
 elif [ "$DO" == "env" ]; then
-    gpg -k "$FRP"
+    gpg2 -k "$FRP"
 else
     echo "Usage: ./whisper.sh [command]"
     echo ""
